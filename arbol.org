@@ -1,0 +1,293 @@
+#+title: Árbol generador de menor costo
+
+#+options: toc:nil
+
+#+latex_header: \usepackage{listings}
+#+latex_header: \lstalias{ipython}{python}
+#+latex_header: \lstset{basicstyle=\small\ttfamily, frame=single}
+
+#+latex_header: \usepackage{bera}
+
+#+property: header-args:ipython :exports both :cache yes :session arbol :results raw drawer
+
+* Problema
+
+Supongamos que a cada arista de la gráfica completa \(K_{n}\) se le
+asigna un valor ("peso"). Si a cada subgráfica le asignamos un peso
+igual a la suma de los pesos de sus aristas, consieraremos el
+problema de encontrar el árbol generador de menor peso.
+
+* Algoritmo de Kuskal
+
+El algoritmo de Kruskal consiste en escoger sucesivamente las aristas
+más baratascon tal de que no formen ciclos con las aristas escogidas
+previamente. e una gráfica con \(n\) vértices se puede demostrar que
+tal algoritmo termina cuando hayamos escogido \(n-1\) aristas, y que
+el árbol así construido es tal que tiene costo mínimo.
+
+* Implementación en Python
+
+Primeramentente vamos a importar las bibliotecas que vamos a utilizar.
+
+#+begin_src ipython
+import networkx as nx
+import matplotlib.pyplot as plt
+from random import random as random
+from scipy.spatial.distance import euclidean
+#+end_src
+
+#+RESULTS[2a253d47c089a054eb3655b60d8ccea8fad581c9]:
+:results:
+# Out[2]:
+:end:
+
+A continuación definiremos una gráfica aleatoria con diez vértices.
+#+begin_src ipython
+g=nx.gnp_random_graph(10,0.2)
+#+end_src
+
+#+RESULTS[6cb25f08ff5c48547b3f4dfee8e011fbbf4547c2]:
+:results:
+# Out[8]:
+:end:
+
+Veremos si nuestra gráfica es un bosque.
+#+begin_src ipython
+nx.is_forest(g), nx.is_connected(g)
+#+end_src
+
+#+RESULTS[e7d1dbb3a296c52111081a2873e11b0c5e1bcb99]:
+:results:
+# Out[9]:
+: (True, False)
+:end:
+
+Dibujaremos la gráfica ya que tiene las características buscadas.
+#+begin_src ipython
+nx.draw(g, with_labels=True)
+#+end_src
+
+#+RESULTS[7a5a44e71604efbb3ac02fd3863ef7628a5be23d]:
+:results:
+# Out[10]:
+[[file:./obipy-resources/2226XIB.png]]
+:end:
+
+Calcularemos las componentes conexa de la gráfica anterior
+#+begin_src ipython
+list(nx.connected_components(g))
+#+end_src
+
+#+RESULTS[fd43bac86ab4e6adb6ece858cb2c922a37acadb0]:
+:results:
+# Out[11]:
+: [{0, 1, 2, 3, 4, 6, 7, 8}, {5}, {9}]
+:end:
+
+Veamos la componente que contiene al vértice 0.
+
+#+begin_src ipython
+nx.node_connected_component(g,0)
+#+end_src
+
+#+RESULTS[84e09df2d15057ce755c484d0b3c164d992f950e]:
+:results:
+# Out[12]:
+: {0, 1, 2, 3, 4, 6, 7, 8}
+:end:
+
+Dibujaremos ahora un árbol elegido aleatoriamente
+#+begin_src ipython
+t=nx.random_tree(10)
+nx.draw(t,with_labels=True)
+#+end_src
+
+#+RESULTS[7198899532f119d85be7a7b4da483cf334eb4b66]:
+:results:
+# Out[13]:
+[[file:./obipy-resources/2226kSH.png]]
+:end:
+
+* Puntos en el plano
+  Si tenemos dos listas de números de tamaño =n=, podemos dibujar n
+  puntos en el plano tomando las coordenadas =x= de la primera lista y
+  las coordenadas =y= de la segunda.
+
+#+begin_src ipython
+plt.plot([1,1,2],[1,3.5,5],'bx')
+plt.axis([0,3,0,6])
+plt.show()
+#+end_src
+
+#+RESULTS[c5570885a28cf3567f11db05e21a0cad6b6738dd]:
+:results:
+# Out[18]:
+[[file:./obipy-resources/2226lFm.png]]
+:end:
+
+Definamos una función que dibuje =n= puntos en el plano
+aleatoriamente.
+#+begin_src ipython
+def punto_en_el_plano(n):
+    listax=[]
+    listay=[]
+    for i in range(n):
+        listax.append(random())
+        listay.append(random())
+    return listax, listay
+#+end_src
+
+#+RESULTS[e98bfc6e20c6929aee4a045f6fea5bc867673d22]:
+:results:
+# Out[19]:
+:end:
+
+#+begin_src ipython
+puntos=punto_en_el_plano(50)
+puntos
+#+end_src
+
+#+RESULTS[06661c542368384f97472f86b0c3e4f2aeef5ecf]:
+:results:
+# Out[25]:
+#+BEGIN_EXAMPLE
+  ([0.2779680566346924,
+  0.9183058852488469,
+  0.7647632027925451,
+  0.6664867576509929,
+  0.5819884288557448,
+  0.2957499680116805,
+  0.7701766115738797,
+  0.823063190336718,
+  0.5793716628714188,
+  0.9221424161109051,
+  0.2652359007512932,
+  0.8083768488486259,
+  0.07039674871910939,
+  0.34900776646800724,
+  0.8911473828927764,
+  0.3012612296872418,
+  0.3921172618571199,
+  0.6009488243873751,
+  0.4231324024863623,
+  0.2522968616233082,
+  0.7659572856860325,
+  0.4526791381579982,
+  0.037910588818495405,
+  0.28743307048041333,
+  0.3476578547107132,
+  0.5707592192300921,
+  0.8244351274460646,
+  0.35498533736254745,
+  0.27214277829874967,
+  0.7831643129575026,
+  0.3299055429345167,
+  0.7976862584467163,
+  0.11781484305176382,
+  0.7211079810826336,
+  0.8458931451964316,
+  0.48113730147355194,
+  0.06468564282655576,
+  0.3860481215313495,
+  0.4840401959604297,
+  0.2863821220149425,
+  0.9056666222262998,
+  0.7793853634024566,
+  0.25522229124214,
+  0.7401537171514199,
+  0.8170565040443577,
+  0.708125085933195,
+  0.6128321522569858,
+  0.4172080638779244,
+  0.7381866343224837,
+  0.1329317832812842],
+  [0.3248494072495114,
+  0.8675534559084873,
+  0.0028104633747018104,
+  0.16970542432179936,
+  0.8777183671185871,
+  0.6701667756830372,
+  0.12727740024716727,
+  0.4131812983769081,
+  0.3224941379082896,
+  0.5416082524846466,
+  0.787057596227821,
+  0.9137489233452771,
+  0.5771539839324159,
+  0.12785524866584463,
+  0.24389769633834235,
+  0.25392791936239023,
+  0.7682953134922573,
+  0.47531417305542334,
+  0.2531936427778103,
+  0.4043032291287346,
+  0.6198014012397868,
+  0.19556329926486493,
+  0.2420539879659308,
+  0.08161718638880633,
+  0.5164041004859801,
+  0.4011318846096056,
+  0.23332209184240837,
+  0.33252196801759826,
+  0.045418388266927456,
+  0.9262123130945688,
+  0.48267502707061927,
+  0.3322492546451259,
+  0.03195739735586045,
+  0.3567623915770458,
+  0.9852784588215138,
+  0.34425698687659356,
+  0.4956103775889369,
+  0.24325825400066603,
+  0.007494017081952409,
+  0.7538928679279238,
+  0.13834030500480243,
+  0.9600153676912979,
+  0.9729719307889448,
+  0.7508347215960659,
+  0.38768620881791904,
+  0.601808717810578,
+  0.23062164230854287,
+  0.3284213936943854,
+  0.46987546905255584,
+  0.891422565437246])
+#+END_EXAMPLE
+:end:
+
+#+begin_src ipython
+plt.plot(puntos[0],puntos[1],'ro')
+plt.show()
+#+end_src
+
+#+RESULTS[9fe2cc2cd1b7f713fed951c99ede67af8a392843]:
+:results:
+# Out[23]:
+[[file:./obipy-resources/2226yPs.png]]
+:end:
+#+begin_src ipython
+def dibujo_puntos(listax, listay):
+    plt.plot(listax,listay,'bo')
+    plt.axis([-0.1,1.1,-0.1,1.1])
+    plt.gca().set_aspect('equal')
+    plt.show()
+#+end_src
+
+#+RESULTS[edd14e0a3f27ce7513e5c7e73d4368dc40947bcb]:
+:results:
+# Out[28]:
+:end:
+
+ #+begin_src ipython
+dibujo_puntos(*puntos)
+ #+end_src
+
+ #+RESULTS[274d1e4a2e4c1e9a72c9f464a39ff8637dd52977]:
+ :results:
+ # Out[29]:
+ [[file:./obipy-resources/2226_Zy.png]]
+ :end:
+
+
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# End:
