@@ -1,0 +1,34 @@
+#+title: Apuntes de teoría de gráficas
+#+author: Isaac Vázquez Mendoza
+#+language: es
+#+latex_header: \usepackage[spanish]{babel}
+#+options: H:2 toc:nil
+#+beamer: \languagepath{spanish}
+
+* Definición de gráfica
+Una gráfica \(G\) consta de dos conjuntos, uno llamado el conjunto de
+vértices y otro llamado el conjunto de aristas.
+
+** Vértices y aristas
+Una *gráfica simple* es un par ordenado \(G=(V(G),E(G))\) tal que:
+    - \(V(G)\) es un conjunto, cuyos elementos se llaman *vértices*,
+    - \(E(G)\) es un conjunto cuyos elementos son subconjuntos de
+      \(V(G)\) de cardinalidad 2. Los elementos de \(E(G)\) se llaman *aristas*.
+    - Si denotamos el conjunto de parejas de elementos de un conjunto
+      \(X\) como \(\binom{X}{2}\), tenemos que \(E(G)\subseteq
+      \binom{V(G)}{2}\).
+
+    Observación. Puede utilizarse solo \(G\) para denotar una gráfica
+    en vez de \(G=(V(G),E(G))\), cuando no hay pie a confución, pese a
+    que es un abuso de notación.
+** Orden y tamaño
+Sea \(G\) una gráfica
+La cardinalidad del conjunto \(V(G)\) es el orden de \(G\) y se denota
+\(|G|\).
+
+
+** Gráficas regulares
+*** Gráficas cúbicas
+** Isomorfismo de gráficas
+* Complemeto de una gráfica
+* Teorema fundamental de la teoría de gráficas
