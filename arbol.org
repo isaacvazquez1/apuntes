@@ -17,7 +17,7 @@ asigna un valor ("peso"). Si a cada subgráfica le asignamos un peso
 igual a la suma de los pesos de sus aristas, consieraremos el
 problema de encontrar el árbol generador de menor peso.
 
-* Algoritmo de Kuskal
+* Algoritmo de Kruskal
 
 El algoritmo de Kruskal consiste en escoger sucesivamente las aristas
 más baratascon tal de que no formen ciclos con las aristas escogidas
@@ -38,7 +38,7 @@ from scipy.spatial.distance import euclidean
 
 #+RESULTS[2a253d47c089a054eb3655b60d8ccea8fad581c9]:
 :results:
-# Out[2]:
+# Out[1]:
 :end:
 
 A continuación definiremos una gráfica aleatoria con diez vértices.
@@ -121,8 +121,8 @@ plt.show()
 
 #+RESULTS[c5570885a28cf3567f11db05e21a0cad6b6738dd]:
 :results:
-# Out[18]:
-[[file:./obipy-resources/2226lFm.png]]
+# Out[2]:
+[[file:./obipy-resources/1868_Fn.png]]
 :end:
 
 Definamos una función que dibuje =n= puntos en el plano
@@ -139,7 +139,7 @@ def punto_en_el_plano(n):
 
 #+RESULTS[e98bfc6e20c6929aee4a045f6fea5bc867673d22]:
 :results:
-# Out[19]:
+# Out[4]:
 :end:
 
 #+begin_src ipython
@@ -149,108 +149,108 @@ puntos
 
 #+RESULTS[06661c542368384f97472f86b0c3e4f2aeef5ecf]:
 :results:
-# Out[25]:
+# Out[5]:
 #+BEGIN_EXAMPLE
-  ([0.2779680566346924,
-  0.9183058852488469,
-  0.7647632027925451,
-  0.6664867576509929,
-  0.5819884288557448,
-  0.2957499680116805,
-  0.7701766115738797,
-  0.823063190336718,
-  0.5793716628714188,
-  0.9221424161109051,
-  0.2652359007512932,
-  0.8083768488486259,
-  0.07039674871910939,
-  0.34900776646800724,
-  0.8911473828927764,
-  0.3012612296872418,
-  0.3921172618571199,
-  0.6009488243873751,
-  0.4231324024863623,
-  0.2522968616233082,
-  0.7659572856860325,
-  0.4526791381579982,
-  0.037910588818495405,
-  0.28743307048041333,
-  0.3476578547107132,
-  0.5707592192300921,
-  0.8244351274460646,
-  0.35498533736254745,
-  0.27214277829874967,
-  0.7831643129575026,
-  0.3299055429345167,
-  0.7976862584467163,
-  0.11781484305176382,
-  0.7211079810826336,
-  0.8458931451964316,
-  0.48113730147355194,
-  0.06468564282655576,
-  0.3860481215313495,
-  0.4840401959604297,
-  0.2863821220149425,
-  0.9056666222262998,
-  0.7793853634024566,
-  0.25522229124214,
-  0.7401537171514199,
-  0.8170565040443577,
-  0.708125085933195,
-  0.6128321522569858,
-  0.4172080638779244,
-  0.7381866343224837,
-  0.1329317832812842],
-  [0.3248494072495114,
-  0.8675534559084873,
-  0.0028104633747018104,
-  0.16970542432179936,
-  0.8777183671185871,
-  0.6701667756830372,
-  0.12727740024716727,
-  0.4131812983769081,
-  0.3224941379082896,
-  0.5416082524846466,
-  0.787057596227821,
-  0.9137489233452771,
-  0.5771539839324159,
-  0.12785524866584463,
-  0.24389769633834235,
-  0.25392791936239023,
-  0.7682953134922573,
-  0.47531417305542334,
-  0.2531936427778103,
-  0.4043032291287346,
-  0.6198014012397868,
-  0.19556329926486493,
-  0.2420539879659308,
-  0.08161718638880633,
-  0.5164041004859801,
-  0.4011318846096056,
-  0.23332209184240837,
-  0.33252196801759826,
-  0.045418388266927456,
-  0.9262123130945688,
-  0.48267502707061927,
-  0.3322492546451259,
-  0.03195739735586045,
-  0.3567623915770458,
-  0.9852784588215138,
-  0.34425698687659356,
-  0.4956103775889369,
-  0.24325825400066603,
-  0.007494017081952409,
-  0.7538928679279238,
-  0.13834030500480243,
-  0.9600153676912979,
-  0.9729719307889448,
-  0.7508347215960659,
-  0.38768620881791904,
-  0.601808717810578,
-  0.23062164230854287,
-  0.3284213936943854,
-  0.46987546905255584,
-  0.891422565437246])
+  ([0.38299084409712447,
+  0.20118186717759978,
+  0.4606707615555261,
+  0.9799566997462898,
+  0.24389291129326152,
+  0.05648917412859322,
+  0.13897865965381018,
+  0.5229675574320239,
+  0.8792292533956183,
+  0.7719480299095235,
+  0.21650610846983365,
+  0.6483016972960262,
+  0.060703724120815816,
+  0.9145001787478181,
+  0.627099076468679,
+  0.6411978924996936,
+  0.29287292967654344,
+  0.9385794176058497,
+  0.20001288206367895,
+  0.8757769016927016,
+  0.6712733791624409,
+  0.9715780227360912,
+  0.32184993775719295,
+  0.3713502014618325,
+  0.43516857476622284,
+  0.28663401804777733,
+  0.6485853015767333,
+  0.6376465206334283,
+  0.9459886038389888,
+  0.7694769702493587,
+  0.4156470303497536,
+  0.6344266047526328,
+  0.7557415068860754,
+  0.8178703299844712,
+  0.7125680141037501,
+  0.7026658021120696,
+  0.04573646152677924,
+  0.04620831452335861,
+  0.7251724184872034,
+  0.22139396449647586,
+  0.915823456690333,
+  0.4297354597113696,
+  0.16024830043181026,
+  0.9496964864041573,
+  0.2784431372058438,
+  0.5776134470670782,
+  0.11781174865266453,
+  0.5620268615130747,
+  0.04078415346590525,
+  0.6266233376737413],
+  [0.8999515072419905,
+  0.09293321327587789,
+  0.07067137117019762,
+  0.8380743398494105,
+  0.5241850823575496,
+  0.19966005231665374,
+  0.17310948817109095,
+  0.37222766424154397,
+  0.2479600482037917,
+  0.2501291017601316,
+  0.23662256906328516,
+  0.35619707218018115,
+  0.16666663080154698,
+  0.35108774970788814,
+  0.031813662606428705,
+  0.6273648696692274,
+  0.47883880459670314,
+  0.4031240120758506,
+  0.42483666801764197,
+  0.22231452167964416,
+  0.22886615289414358,
+  0.5956477228840844,
+  0.44772530351383566,
+  0.8871920722732503,
+  0.7116471376422563,
+  0.9904214217467862,
+  0.2771752098614929,
+  0.3434962502261365,
+  0.23780948624024612,
+  0.9352179206026026,
+  0.8055218710840905,
+  0.3933311880435627,
+  0.4461775921505351,
+  0.6593326830650039,
+  0.6920640715089798,
+  0.7938218039294385,
+  0.912614842190432,
+  0.16832538758598037,
+  0.3843985518368316,
+  0.36557027627418504,
+  0.2870048915316128,
+  0.6867188211291774,
+  0.3574468228027141,
+  0.6285255652768982,
+  0.31969897232768973,
+  0.2839623176800682,
+  0.09943232961096715,
+  0.6817000131006329,
+  0.7253340917290484,
+  0.6113273881238612])
 #+END_EXAMPLE
 :end:
 
@@ -261,8 +261,8 @@ plt.show()
 
 #+RESULTS[9fe2cc2cd1b7f713fed951c99ede67af8a392843]:
 :results:
-# Out[23]:
-[[file:./obipy-resources/2226yPs.png]]
+# Out[6]:
+[[file:./obipy-resources/1868MQt.png]]
 :end:
 #+begin_src ipython
 def dibujo_puntos(listax, listay):
@@ -274,7 +274,7 @@ def dibujo_puntos(listax, listay):
 
 #+RESULTS[edd14e0a3f27ce7513e5c7e73d4368dc40947bcb]:
 :results:
-# Out[28]:
+# Out[7]:
 :end:
 
  #+begin_src ipython
@@ -283,9 +283,133 @@ dibujo_puntos(*puntos)
 
  #+RESULTS[274d1e4a2e4c1e9a72c9f464a39ff8637dd52977]:
  :results:
- # Out[29]:
- [[file:./obipy-resources/2226_Zy.png]]
+ # Out[8]:
+ [[file:./obipy-resources/1868Zaz.png]]
  :end:
+
+* Distancia euclidiana
+#+begin_src ipython
+a = (0,0)
+b = (3,5)
+euclidean(a,b)
+#+end_src
+
+#+RESULTS[5dd3572395e58f4978f7e3203a053854c229ac91]:
+:results:
+# Out[9]:
+: 5.830951894845301
+:end:
+
+* Gráfica con pesos
+
+En =networkx= se pueden considerar gráficas donde cada arista tiene un
+peso. Por ejemplo:
+#+begin_src ipython
+g=nx.Graph()
+g.add_nodes_from(["a","b","c"])
+g.add_weighted_edges_from([("a","b",2),("a","c",0.5)])
+position=nx.spring_layout(g)
+
+nx.draw_networkx_edge_labels(g,pos=position)
+nx.draw(g,with_labels=True,pos=position)
+#+end_src
+
+#+RESULTS:
+:results:
+# Out[11]:
+[[file:./obipy-resources/1868LkC.png]]
+:end:
+
+Definimos ahora una función que, dadas dos listas de números produzca
+un gráfica con pesos donde los vértices sean los puntos y el peso
+entre los mismos es la distancia euclidiana entre ellos.
+
+#+begin_src ipython
+def grafica_euclidiana(listax, listay):
+    G = nx.Graph()
+    n = len(listax)
+    vertices = []
+    for i in range (n):
+        vertices.append((listax[i], listay[i]))
+    aristas = []
+    for i in range(n):
+        for j in range(i+1, n):
+            u = vertices[i]
+            v = vertices[j]
+            aristas.append((u, v, euclidean(u, v)))
+    G.add_nodes_from(vertices)
+    G.add_weighted_edges_from(aristas)
+    return G
+#+end_src
+
+#+RESULTS[2379ea29e3c76e2af7e95df8e7a4c5abf5993d7c]:
+:results:
+# Out[18]:
+:end:
+ #+begin_src ipython
+g = grafica_euclidiana(*puntos)
+ #+end_src
+
+ #+RESULTS:
+ :results:
+ # Out[20]:
+ :end:
+
+#+begin_src ipython
+def arbol_menor_costo(G):
+    T = nx.Graph()
+    T.add_nodes_from(G)
+    aristas = list(G.edges(data = True))
+    aristas = sorted(aristas, key = lambda e: -e[2]['weight'])
+    while len(T.edges()) < len(G)-1:
+        e = aristas.pop()
+        if not (e[0] in nx.node_connected_component(T, e[1])):
+            T.add_edge(e[0], e[1])
+    return T
+#+end_src
+
+#+RESULTS[3469ad1c20ed62eb1ba9496143efc7edbdac523c]:
+:results:
+# Out[21]:
+:end:
+ 
+#+begin_src ipython
+plt.figure(figsize=(10,10))
+
+t = arbol_menor_costo(g)
+nx.draw(t)
+#+end_src
+
+#+RESULTS:
+:results:
+# Out[27]:
+[[file:./obipy-resources/1868YuI.png]]
+:end:
+
+
+#+begin_src ipython
+plt.figure(figsize=(10,10))
+
+for v in t.nodes():
+    plt.plot(v[0], v[1], 'ro')
+
+for e in t.edges():
+    p1 = e[0]
+    p2 = e[1]
+    plt.plot([p1[0], p2[0]], [p1[1], p2[1]], color='blue')
+
+plt.axis([-0.1,1.1,-0.1,1.1])
+plt.gca().set_aspect('equal')
+
+plt.show()
+           
+#+end_src
+
+#+RESULTS:
+:results:
+# Out[33]:
+[[file:./obipy-resources/1868l4O.png]]
+:end:
 
 
 # Local Variables:
